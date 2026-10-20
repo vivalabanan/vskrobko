@@ -1,0 +1,390 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Вадим Скробко — собственник автомаркета «Арена», Гродно</title>
+<meta name="description" content="Вадим Скробко, собственник автомаркета «Арена» в Гродно. Продажа и обмен автомобилей с пробегом, финансирование.">
+<style>
+  :root {
+    --bg: #05080d;
+    --panel: #0b121b;
+    --panel-2: #0f1925;
+    --line: rgba(80, 160, 230, .22);
+    --accent: #2fb5ff;
+    --accent-hi: #8be3ff;
+    --ink: #eaf2f8;
+    --muted: #8da0b0;
+    --ok: #38e0a0;
+    --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; background: var(--bg); }
+  body {
+    margin: 0;
+    color: var(--ink);
+    font: 18px/1.7 "SF Pro Display", "Helvetica Neue", Helvetica, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    background:
+      radial-gradient(900px 500px at 80% -5%, rgba(47,181,255,.16), transparent 60%),
+      radial-gradient(700px 500px at 0% 40%, rgba(47,181,255,.07), transparent 60%),
+      linear-gradient(rgba(255,255,255,.02) 1px, transparent 1px) 0 0 / 100% 46px,
+      var(--bg);
+  }
+  h1, h2, h3 { margin: 0; line-height: 1.05; letter-spacing: -0.02em; }
+  h2 {
+    display: flex; align-items: center; gap: 14px;
+    font-size: clamp(1.9rem, 4.6vw, 3rem);
+    font-weight: 800;
+    text-transform: uppercase;
+    margin-bottom: 1.8rem;
+  }
+  h2::before {
+    content: ""; flex: none; width: 12px; height: 12px; border-radius: 50%;
+    background: var(--accent); box-shadow: 0 0 14px 3px rgba(47,181,255,.7);
+  }
+  h2::after { content: ""; flex: 1; height: 1px; background: linear-gradient(90deg, var(--line), transparent); }
+  p { margin: 0 0 1rem; }
+  strong { color: #fff; font-weight: 700; }
+  a { color: var(--accent-hi); }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
+  section { padding: 84px 0 0; }
+
+  /* Панели */
+  .panel {
+    position: relative;
+    background: linear-gradient(180deg, var(--panel-2), var(--panel));
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    padding: 26px;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.05), 0 18px 40px rgba(0,0,0,.35);
+  }
+  .label {
+    display: inline-flex; align-items: center; gap: 8px;
+    font: 600 .72rem var(--mono);
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  .label::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--ok); box-shadow: 0 0 8px var(--ok); }
+
+  /* Шапка */
+  .hero .wrap {
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    gap: 52px;
+    align-items: center;
+    padding-top: 70px;
+    padding-bottom: 36px;
+  }
+  .hero .label { margin-bottom: 22px; }
+  .hero h1 {
+    font-size: clamp(3.2rem, 9.5vw, 6rem);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -0.035em;
+    margin-bottom: 18px;
+  }
+  .hero h1 span {
+    display: block;
+    background: linear-gradient(90deg, var(--accent-hi), var(--accent));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .meta { font: 500 .88rem var(--mono); letter-spacing: .08em; color: var(--muted); margin-bottom: 14px; }
+  .lead { font-size: 1.2rem; line-height: 1.55; max-width: 26em; color: #cfdbe5; }
+  .btns { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 26px; }
+  .btn {
+    display: inline-block;
+    padding: 13px 26px;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: .95rem;
+    text-decoration: none;
+    color: #03121c;
+    background: linear-gradient(180deg, var(--accent-hi), var(--accent));
+    box-shadow: 0 0 22px rgba(47,181,255,.45);
+    transition: transform .15s, box-shadow .15s;
+  }
+  .btn:hover { transform: translateY(-2px); box-shadow: 0 0 32px rgba(47,181,255,.7); }
+  .btn.ghost { color: var(--accent-hi); background: transparent; border: 1px solid var(--accent); box-shadow: none; }
+  .btn.ghost:hover { background: rgba(47,181,255,.12); }
+
+  /* Экран с фото */
+  .screen { position: relative; border-radius: 18px; overflow: hidden; border: 1px solid var(--line); box-shadow: 0 0 40px rgba(47,181,255,.18), 0 20px 50px rgba(0,0,0,.5); }
+  .screen img { display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: center 40%; filter: saturate(.95) contrast(1.05); }
+  .screen::after {
+    content: ""; position: absolute; inset: 0; pointer-events: none;
+    background:
+      repeating-linear-gradient(0deg, rgba(0,0,0,.13) 0 1px, transparent 1px 3px),
+      linear-gradient(180deg, transparent 60%, rgba(5,8,13,.75));
+  }
+  .screen i { position: absolute; width: 22px; height: 22px; border: 2px solid var(--accent); z-index: 2; }
+  .screen i:nth-of-type(1) { top: 12px; left: 12px; border-right: 0; border-bottom: 0; }
+  .screen i:nth-of-type(2) { top: 12px; right: 12px; border-left: 0; border-bottom: 0; }
+  .screen i:nth-of-type(3) { bottom: 12px; left: 12px; border-right: 0; border-top: 0; }
+  .screen i:nth-of-type(4) { bottom: 12px; right: 12px; border-left: 0; border-top: 0; }
+  .screen .cap { position: absolute; left: 20px; bottom: 18px; z-index: 2; font: 600 .75rem var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--accent-hi); }
+
+  /* Приборы */
+  .gauges { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 18px; padding-top: 24px; padding-bottom: 8px; }
+  .gauge { text-align: center; padding: 22px 16px 20px; }
+  .gauge svg { display: block; width: 100%; max-width: 220px; margin: 0 auto; overflow: visible; }
+  .g-track { fill: none; stroke: #17222f; stroke-width: 12; stroke-linecap: round; }
+  .g-ticks { fill: none; stroke: rgba(139,227,255,.35); stroke-width: 6; stroke-dasharray: .4 3; }
+  .g-val {
+    fill: none; stroke: url(#gg); stroke-width: 12; stroke-linecap: round;
+    stroke-dasharray: 100; stroke-dashoffset: var(--off);
+    filter: drop-shadow(0 0 6px rgba(47,181,255,.7));
+    animation: fill 1.6s cubic-bezier(.2,.7,.2,1) both;
+  }
+  @keyframes fill { from { stroke-dashoffset: 100; } }
+  .gauge b { display: block; margin-top: -34px; font: 700 2rem/1 var(--mono); letter-spacing: -0.04em; color: #fff; text-shadow: 0 0 16px rgba(47,181,255,.5); }
+  .gauge span { display: block; margin-top: 12px; font-size: .88rem; color: var(--muted); }
+
+  /* Обо мне */
+  .two { display: grid; grid-template-columns: 1fr 1.2fr; gap: 40px; align-items: start; }
+  .two .screen img { aspect-ratio: 4 / 5; }
+  .traits { display: flex; flex-wrap: wrap; gap: 8px; margin: 18px 0 0; }
+  .trait { padding: 6px 14px; border: 1px solid var(--accent); border-radius: 999px; font: 600 .78rem var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--accent-hi); background: rgba(47,181,255,.08); }
+  ul.timeline { list-style: none; padding: 0; margin: 28px 0 0; display: grid; gap: 12px; }
+  ul.timeline li {
+    position: relative;
+    padding: 16px 20px 16px 52px;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    color: #cfdbe5;
+  }
+  ul.timeline li::before {
+    content: "›"; position: absolute; left: 20px; top: 12px;
+    font: 700 1.6rem/1.3 var(--mono); color: var(--accent);
+  }
+
+  /* Дело */
+  .lead-dark { font-size: 1.2rem; line-height: 1.55; max-width: 32em; color: #cfdbe5; margin-bottom: 30px; }
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; }
+  .card h3 { font-size: 1.35rem; font-weight: 800; margin: 10px 0 8px; }
+  .card p { margin: 0; font-size: 1rem; color: var(--muted); }
+  .quote {
+    margin-top: 26px;
+    padding: 22px 26px;
+    border-radius: 14px;
+    border: 1px solid var(--accent);
+    background: linear-gradient(90deg, rgba(47,181,255,.16), rgba(47,181,255,.04));
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #dbe8f1;
+    box-shadow: 0 0 26px rgba(47,181,255,.15);
+  }
+
+  /* Отличия */
+  .why { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; }
+  .why li {
+    display: grid; grid-template-columns: auto 1fr; gap: 18px; align-items: center;
+    padding: 18px 22px;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    font-size: 1.08rem;
+    color: #d5e1ea;
+  }
+  .why li::before { content: "OK"; font: 700 .72rem var(--mono); letter-spacing: .12em; color: #04170f; background: var(--ok); padding: 4px 9px; border-radius: 6px; box-shadow: 0 0 12px rgba(56,224,160,.5); }
+
+  /* Команда */
+  .team .screen img { aspect-ratio: 16 / 9; object-position: center 55%; }
+  .team p { margin: 20px 4px 0; color: #cfdbe5; }
+  .how { color: var(--muted); font-size: 1rem; }
+
+  /* Финал */
+  .finale { padding: 110px 0 80px; text-align: center; }
+  .finale .panel { max-width: 800px; margin: 0 auto; padding: 56px 28px 44px; border-color: var(--accent); box-shadow: 0 0 50px rgba(47,181,255,.22), inset 0 1px 0 rgba(255,255,255,.06); }
+  .finale blockquote {
+    margin: 18px 0 14px;
+    font-size: clamp(1.9rem, 5.5vw, 3.2rem);
+    line-height: 1.12; font-weight: 800; letter-spacing: -0.03em;
+  }
+  .finale p { margin: 0; color: var(--muted); }
+  .finale .btns { justify-content: center; margin-top: 28px; }
+
+  footer { padding: 24px 0 40px; font: 500 .78rem var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); text-align: center; }
+
+  @media (max-width: 760px) {
+    body { font-size: 17px; }
+    section { padding-top: 60px; }
+    .hero .wrap { grid-template-columns: 1fr; gap: 32px; padding-top: 40px; }
+    .hero .screen { order: -1; max-width: 360px; }
+    .two { grid-template-columns: 1fr; }
+    .panel { padding: 20px; }
+  }
+  @media (prefers-reduced-motion: reduce) { .g-val { animation: none; } }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <span class="label">Автомаркет «Арена» · Гродно</span>
+      <h1>Вадим <span>Скробко</span></h1>
+      <p class="meta">Собственник · 33 года · можно «Вадим Сергеевич»</p>
+      <p class="lead">Продаю так, как хотел бы покупать сам. Построил автомаркет с нуля: сегодня на площадке около 300 автомобилей.</p>
+      <div class="btns">
+        <a class="btn" href="https://www.instagram.com/vadimskrobko" target="_blank" rel="noopener">Instagram</a>
+      </div>
+    </div>
+    <div class="screen">
+      <img src="images/vadim-smile.jpg" alt="Вадим Скробко за рабочим столом">
+      <i></i><i></i><i></i><i></i>
+      <span class="cap">Вадим Скробко</span>
+    </div>
+  </div>
+
+  <!-- Приборы -->
+  <div class="wrap gauges">
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+      <defs>
+        <linearGradient id="gg" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0" stop-color="#2fb5ff"/><stop offset="1" stop-color="#8be3ff"/>
+        </linearGradient>
+      </defs>
+    </svg>
+
+    <div class="panel gauge">
+      <svg viewBox="0 0 200 118" aria-hidden="true">
+        <path class="g-ticks" d="M8 110 A92 92 0 0 1 192 110" pathLength="100"/>
+        <path class="g-track" d="M20 110 A80 80 0 0 1 180 110"/>
+        <path class="g-val" style="--off:20" d="M20 110 A80 80 0 0 1 180 110" pathLength="100"/>
+      </svg>
+      <b>8 лет</b><span>в автобизнесе</span>
+    </div>
+
+    <div class="panel gauge">
+      <svg viewBox="0 0 200 118" aria-hidden="true">
+        <path class="g-ticks" d="M8 110 A92 92 0 0 1 192 110" pathLength="100"/>
+        <path class="g-track" d="M20 110 A80 80 0 0 1 180 110"/>
+        <path class="g-val" style="--off:25" d="M20 110 A80 80 0 0 1 180 110" pathLength="100"/>
+      </svg>
+      <b>~300</b><span>авто в наличии</span>
+    </div>
+
+    <div class="panel gauge">
+      <svg viewBox="0 0 200 118" aria-hidden="true">
+        <path class="g-ticks" d="M8 110 A92 92 0 0 1 192 110" pathLength="100"/>
+        <path class="g-track" d="M20 110 A80 80 0 0 1 180 110"/>
+        <path class="g-val" style="--off:33" d="M20 110 A80 80 0 0 1 180 110" pathLength="100"/>
+      </svg>
+      <b>~20</b><span>человек в команде</span>
+    </div>
+
+    <div class="panel gauge">
+      <svg viewBox="0 0 200 118" aria-hidden="true">
+        <path class="g-ticks" d="M8 110 A92 92 0 0 1 192 110" pathLength="100"/>
+        <path class="g-track" d="M20 110 A80 80 0 0 1 180 110"/>
+        <path class="g-val" style="--off:1" d="M20 110 A80 80 0 0 1 180 110" pathLength="100"/>
+      </svg>
+      <b>99 из 100</b><span>клиентов получают одобрение</span>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap">
+    <h2>Обо мне</h2>
+    <div class="two">
+      <div class="screen">
+        <img src="images/vadim-main.jpg" alt="Вадим Скробко показывает большой палец" loading="lazy">
+        <i></i><i></i><i></i><i></i>
+        <span class="cap">Всё под контролем</span>
+      </div>
+      <div>
+        <div class="panel">
+          <p>Я живу и работаю в Гродно и являюсь собственником автомаркета <strong>«Арена»</strong>. С командой и клиентами общаюсь доверительно и с юмором: на серьёзные вещи можно смотреть спокойно, а решения принимать трезво.</p>
+          <p>Вне работы люблю путешествия и активный отдых: баню, бассейн и <strong>эндуро-мотоцикл</strong>. Лично езжу на Citroen C5 Aircross 2022 года.</p>
+          <div class="traits">
+            <span class="trait">Умный</span>
+            <span class="trait">Рассудительный</span>
+            <span class="trait">Ответственный</span>
+          </div>
+        </div>
+        <ul class="timeline">
+          <li>Начинал в найме и дорос до <strong>топ-5 лучших менеджеров по продажам</strong> в компании «Белакт-Столица».</li>
+          <li>Уже <strong>8 лет</strong> работаю в автомобильной сфере.</li>
+          <li>Ушёл в своё дело и построил автомаркет <strong>с полного нуля</strong>: собственная площадка, собственный офис, команда около 20 человек.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="work">
+  <div class="wrap">
+    <h2>Чем занимается «Арена»</h2>
+    <p class="lead-dark">Мы продаём и обмениваем автомобили с пробегом. В основном это свежепригнанные машины 2018–2025 годов из Европы и США.</p>
+
+    <div class="cards">
+      <article class="panel card">
+        <span class="label">Статус: в наличии</span>
+        <h3>Продажа</h3>
+        <p>Около 300 автомобилей в наличии. Ассортимент собран так, чтобы на площадке было из чего выбрать.</p>
+      </article>
+      <article class="panel card">
+        <span class="label">Статус: принимаем</span>
+        <h3>Обмен</h3>
+        <p>Принимаем ваш автомобиль в зачёт при покупке нового для вас.</p>
+      </article>
+      <article class="panel card">
+        <span class="label">Статус: одобрено</span>
+        <h3>Финансирование</h3>
+        <p>Работаем со многими лизинговыми и кредитными организациями. Одобрение получают 99 клиентов из 100.</p>
+      </article>
+    </div>
+
+    <div class="quote">
+      <strong>Главное достижение.</strong> Компания построена с нуля. Теперь у нас есть собственная площадка, собственный офис и команда, в которую я выбираю людей по опыту, пониманию техник продаж и знанию автомобиля.
+    </div>
+  </div>
+</section>
+
+<section id="why">
+  <div class="wrap">
+    <h2>Чем мы отличаемся</h2>
+    <ul class="why">
+      <li><span>Мы <strong>одни из первых</strong> в Гродно, кто начал этот бизнес.</span></li>
+      <li><span>У нас <strong>наработанная клиентская база</strong>.</span></li>
+      <li><span>На площадке <strong>правильно собранный ассортимент</strong> автомобилей.</span></li>
+      <li><span><strong>Удобное расположение</strong>: центр города, объездное кольцо, удобные подъезды.</span></li>
+      <li><span>Работаем со многими <strong>лизинговыми и кредитными организациями</strong>.</span></li>
+    </ul>
+  </div>
+</section>
+
+<section id="team" class="team">
+  <div class="wrap">
+    <h2>Команда</h2>
+    <div class="screen">
+      <img src="images/team.jpg" alt="Менеджеры по продажам автомаркета «Арена» у здания" loading="lazy">
+      <i></i><i></i><i></i><i></i>
+      <span class="cap">Менеджеры по продажам</span>
+    </div>
+    <p>Это менеджеры по продажам «Арены». Всего в компании около 20 человек.</p>
+    <p class="how"><strong>Как со мной работать.</strong> Пишите или звоните. Обращаться можно «Вадим Сергеевич», но можно и проще: я за доверительный разговор.</p>
+  </div>
+</section>
+
+<div class="finale">
+  <div class="wrap">
+    <div class="panel">
+      <span class="label">На связи</span>
+      <blockquote>«Продаю так, как хотел бы покупать сам.»</blockquote>
+      <p>— Вадим Скробко, автомаркет «Арена», Гродно</p>
+      <div class="btns">
+        <a class="btn" href="https://www.instagram.com/vadimskrobko" target="_blank" rel="noopener">Написать в Instagram</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>© Вадим Скробко · автомаркет «Арена» · Гродно</footer>
+
+</body>
+</html>
